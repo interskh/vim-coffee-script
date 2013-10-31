@@ -194,12 +194,14 @@ syn region coffeeBrackets matchgroup=coffeeBracket start=/\[/ end=/\]/
 \                         contains=@coffeeAll
 syn region coffeeParens matchgroup=coffeeParen start=/(/ end=/)/
 \                       contains=@coffeeAll
+syn match coffeeEmptyParens /()/ display
 
 " These are highlighted the same as commas since they tend to go together.
 hi def link coffeeBlock coffeeExtendedOp
 hi def link coffeeBracket coffeeBlock
 hi def link coffeeCurly coffeeBlock
 hi def link coffeeParen coffeeBlock
+hi def link coffeeEmptyParen None
 
 " A function definition
 syn match coffeeFunction /@\?\I.*\w\+\s*\ze=\s*\((.\{-})\)\=\s*[-=]>/ display
