@@ -204,11 +204,11 @@ hi def link coffeeParen coffeeBlock
 hi def link coffeeEmptyParen None
 
 " A function definition
-syn match coffeeFunction /@\?\I.*\w\+\s*\ze=\s*\((.\{-})\)\=\s*[-=]>/ display
+syn match coffeeFunction /@\?\I[^,]*\w\+\s*\ze=\s*\((.\{-})\)\=\s*[-=]>/ display
 hi def link coffeeFunction coffeeObjAssign
 
 " A method definition
-syn match coffeeMethod /@\?\I.*\w\+\s*\ze:\s*\((.\{-})\)\=\s*[-=]>/ display
+syn match coffeeMethod /@\?\I[^,]*\w\+\s*\ze:\s*\((.\{-})\)\=\s*[-=]>/ display
 hi def link coffeeMethod coffeeObjAssign
 
 
