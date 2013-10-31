@@ -116,11 +116,11 @@ syn match coffeeObjAssign /@\?\%(\I\|\$\)\%(\i\|\$\)*\s*\ze::\@!/ contains=@coff
 hi def link coffeeObjAssign Identifier
 
 " A function definition
-syn match coffeeFunction /@\?\I.*\w\+\ze\s*=\s*\((.\{-})\)\=\s*\(=>\|->\)/ display
+syn match coffeeFunction /@\?\I.*\w\+\s*=\s*\ze\((.\{-})\)\=\s*[-=]>/ display
 hi def link coffeeFunction coffeeStatement
 
 " A method definition
-syn match coffeeMethod /@\?\I.*\w\+\ze\s*:\s*\((.\{-})\)\=\s*\(=>\|->\)/ display
+syn match coffeeMethod /@\?\I.*\w\+\s*:\s*\ze\((.\{-})\)\=\s*[-=]>/ display
 hi def link coffeeMethod coffeeObjAssign
 
 syn keyword coffeeTodo TODO FIXME XXX contained
