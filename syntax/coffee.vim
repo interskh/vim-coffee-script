@@ -50,7 +50,7 @@ hi def link coffeeExtendedOp coffeeOperator
 
 " This is separate from `coffeeExtendedOp` to help differentiate commas from
 " dots.
-syn match coffeeSpecialOp /[,;]/ display
+syn match coffeeSpecialOp /[;]/ display
 hi def link coffeeSpecialOp SpecialChar
 
 syn match coffeeBoolean /\<\%(true\|on\|yes\|false\|off\|no\)\>/ display
@@ -114,14 +114,6 @@ hi def link coffeeReservedError Error
 " A normal object assignment
 syn match coffeeObjAssign /@\?\%(\I\|\$\)\%(\i\|\$\)*\s*\ze::\@!/ contains=@coffeeIdentifier display
 hi def link coffeeObjAssign Identifier
-
-" A function definition
-syn match coffeeFunction /@\?\I.*\w\+\s*=\s*\ze\((.\{-})\)\=\s*[-=]>/ display
-hi def link coffeeFunction coffeeStatement
-
-" A method definition
-syn match coffeeMethod /@\?\I.*\w\+\s*:\s*\ze\((.\{-})\)\=\s*[-=]>/ display
-hi def link coffeeMethod coffeeObjAssign
 
 syn keyword coffeeTodo TODO FIXME XXX contained
 hi def link coffeeTodo Todo
@@ -204,10 +196,19 @@ syn region coffeeParens matchgroup=coffeeParen start=/(/ end=/)/
 \                       contains=@coffeeAll
 
 " These are highlighted the same as commas since they tend to go together.
-hi def link coffeeBlock coffeeSpecialOp
+hi def link coffeeBlock coffeeExtendedOp
 hi def link coffeeBracket coffeeBlock
 hi def link coffeeCurly coffeeBlock
 hi def link coffeeParen coffeeBlock
+
+" A function definition
+syn match coffeeFunction /@\?\I.*\w\+\s*\ze=\s*\((.\{-})\)\=\s*[-=]>/ display
+hi def link coffeeFunction coffeeObjAssign
+
+" A method definition
+syn match coffeeMethod /@\?\I.*\w\+\s*\ze:\s*\((.\{-})\)\=\s*[-=]>/ display
+hi def link coffeeMethod coffeeObjAssign
+
 
 " This is used instead of TOP to keep things coffee-specific for good
 " embedding. `contained` groups aren't included.
